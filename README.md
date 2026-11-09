@@ -6,8 +6,6 @@ The current codebase is a **data-collection and preprocessing pipeline**. It doe
 
 ## What is in this project
 
-This README is in `_project_files/`, which contains the scripts and configs:
-
 ```text
 _project_files/
 ├── config/                 # Jaeger configuration
