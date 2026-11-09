@@ -1,0 +1,149 @@
+# configs/campaign_matrix.yaml
+# Balanced RCA Benchmark Campaign for DeathStarBench Social Network
+# Defines multiple load levels, workload mixes, fault types/severities,
+# target services, and repetitions.
+
+version: "3.0"
+benchmark_name: "DeathStarBench-SocialNetwork-RCA"
+
+# ─── Temporal profile ─────────────────────────────────────────────
+time_profile:
+  warm_up_s: 60          # ≥60s to let JIT, caches, and connections stabilize
+  fault_duration_s: 60   # long enough for multiple 5s windows under fault
+  recovery_observation_s: 120  # observe recovery dynamics
+  cooldown_s: 60         # post-recovery buffer
+  total_duration_s: 300  # 60 + 60 + 120 + 60
+
+window_step_s: 5         # telemetry aggregation window
+
+# ─── Load levels (RPS) ────────────────────────────────────────────
+load_levels:
+  - name: low
+    rps: 25
+  - name: moderate
+    rps: 50
+  - name: high
+    rps: 100
+  - name: stress
+    rps: 200
+
+# ─── Workload mixes ───────────────────────────────────────────────
+workload_mixes:
+  - name: write_heavy
+    endpoint: compose       # compose-post only
+  - name: read_heavy
+    endpoint: home          # read-home-timeline only
+  - name: balanced
+    endpoint: mixed         # mixed-workload.lua (compose + read-home + read-user)
+
+# ─── Target services for fault injection ──────────────────────────
+# Formally restricted per workload mix to guarantee faults target active on-path components
+workload_targets:
+  compose:
+    - compose-post-service
+    - text-service
+    - post-storage-service
+    - post-storage-mongodb
+  home:
+    - home-timeline-service
+    - post-storage-service
+    - post-storage-mongodb
+    - home-timeline-redis
+  mixed:
+    - compose-post-service
+    - text-service
+    - home-timeline-service
+    - social-graph-service
+    - post-storage-service
+    - post-storage-mongodb
+    - home-timeline-redis
+
+target_services:
+  orchestration:
+    - compose-post-service
+  business_logic:
+    - text-service
+    - home-timeline-service
+    - social-graph-service
+  data_access:
+    - post-storage-service
+    - post-storage-mongodb
+    - home-timeline-redis
+
+# ─── Fault scenarios ──────────────────────────────────────────────
+fault_scenarios:
+  # Baseline (no fault) — one per load_level × workload_mix
+  - name: baseline
+    type: none
+
+  # CPU faults — three modes × severities
+  - name: cpu_throttle_mild
+    type: cpu
+    cpu_mode: throttle
+    intensity: 0.3           # 30% of 1 core
+
+  - name: cpu_throttle_moderate
+    type: cpu
+    cpu_mode: throttle
+    intensity: 0.1           # 10% of 1 core
+
+  - name: cpu_throttle_severe
+    type: cpu
+    cpu_mode: throttle
+    intensity: 0.04          # 4% of 1 core (strongest propagation)
+
+  - name: cpu_burn_only
+    type: cpu
+    cpu_mode: burn
+    intensity: 2             # 2 burn workers (silent variant — may not propagate)
+    burn_cores: 2
+
+  - name: cpu_burn_and_throttle
+    type: cpu
+    cpu_mode: burn_and_throttle
+    intensity: 0.1           # CFS quota
+    burn_cores: 2            # burn workers competing for the quota
+
+  # Memory faults (targeted at on-path datastores with substantial baseline memory footprints)
+  - name: memory_moderate
+    type: memory
+    intensity: 64           # 64 MB limit (active working set is ~100MB, sustaining continuous paging)
+
+  - name: memory_severe
+    type: memory
+    intensity: 48           # 48 MB limit
+
+  # Network faults — delay and loss
+  - name: network_delay_mild
+    type: network
+    delay_ms: 30
+    loss_pct: 0
+
+  - name: network_delay_severe
+    type: network
+    delay_ms: 100
+    loss_pct: 0
+
+  - name: network_loss_mild
+    type: network
+    delay_ms: 0
+    loss_pct: 5.0
+
+  - name: network_loss_severe
+    type: network
+    delay_ms: 0
+    loss_pct: 15.0
+
+# ─── Repetitions ──────────────────────────────────────────────────
+repetitions_per_scenario: 3
+
+# ─── Smoke test subset ────────────────────────────────────────────
+# For initial validation, run these before the full campaign:
+smoke_test:
+  load_level: moderate       # 50 RPS
+  workload_mix: balanced     # mixed endpoint
+  fault_scenarios:
+    - cpu_throttle_severe    # strongest propagation
+    - baseline               # control
+  target_service: compose-post-service
+  repetitions: 2

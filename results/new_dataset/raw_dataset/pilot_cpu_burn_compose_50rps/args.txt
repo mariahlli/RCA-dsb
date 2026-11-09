@@ -1,0 +1,21 @@
+{
+  "run_id": "pilot_cpu_burn_compose_50rps",
+  "system": "DeathStarBench-SocialNetwork",
+  "endpoint": "compose",
+  "rps": 50,
+  "experiment_duration": 180,
+  "warm_up_duration": 60,
+  "fault_type": "cpu",
+  "cpu_mode": "burn",
+  "target_component": "compose-post-service",
+  "fault_measure": "cpu_burn_cores=2",
+  "fault_start_ts": 1794257527.149238,
+  "fault_end_ts": 1794257556.8499088,
+  "fault_start_effective": 1794257527.5468464,
+  "fault_end_effective": 1794257557.117807,
+  "fault_duration_s": 30,
+  "burn_cores": 2,
+  "seed": 42,
+  "experiment_start_ts": 1794257466.9512765,
+  "experiment_end_ts": 1794257647.5309756
+}

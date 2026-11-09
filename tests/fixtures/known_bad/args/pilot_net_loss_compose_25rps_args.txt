@@ -1,0 +1,21 @@
+{
+  "run_id": "pilot_net_loss_compose_25rps",
+  "system": "DeathStarBench-SocialNetwork",
+  "endpoint": "compose",
+  "rps": 25,
+  "experiment_duration": 120,
+  "warm_up_duration": 45,
+  "fault_type": "network",
+  "cpu_mode": null,
+  "target_component": "compose-post-service",
+  "fault_measure": "delay=0ms,loss=5.0%",
+  "fault_start_ts": 1794090942.0483818,
+  "fault_end_ts": 1794090971.863455,
+  "fault_start_effective": 1794090942.8194995,
+  "fault_end_effective": 1794090972.7577496,
+  "fault_duration_s": 30,
+  "burn_cores": null,
+  "seed": 42,
+  "experiment_start_ts": 1794090896.8646197,
+  "experiment_end_ts": 1794091017.5059419
+}

@@ -1,0 +1,21 @@
+{
+  "run_id": "pilot_cpu_throttle_compose_200rps",
+  "system": "DeathStarBench-SocialNetwork",
+  "endpoint": "compose",
+  "rps": 200,
+  "experiment_duration": 180,
+  "warm_up_duration": 60,
+  "fault_type": "cpu",
+  "cpu_mode": "throttle",
+  "target_component": "compose-post-service",
+  "fault_measure": "cpus=0.04",
+  "fault_start_ts": 1794257222.565061,
+  "fault_end_ts": 1794257252.2201378,
+  "fault_start_effective": 1794257222.5650613,
+  "fault_end_effective": 1794257252.220139,
+  "fault_duration_s": 30,
+  "burn_cores": 2,
+  "seed": 42,
+  "experiment_start_ts": 1794257162.3215091,
+  "experiment_end_ts": 1794257342.8898306
+}

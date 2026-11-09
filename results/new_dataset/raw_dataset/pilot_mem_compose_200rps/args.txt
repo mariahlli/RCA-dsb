@@ -1,0 +1,21 @@
+{
+  "run_id": "pilot_mem_compose_200rps",
+  "system": "DeathStarBench-SocialNetwork",
+  "endpoint": "compose",
+  "rps": 200,
+  "experiment_duration": 180,
+  "warm_up_duration": 60,
+  "fault_type": "memory",
+  "cpu_mode": null,
+  "target_component": "compose-post-service",
+  "fault_measure": "memory_mb=75.0",
+  "fault_start_ts": 1794256949.0244124,
+  "fault_end_ts": 1794256978.609779,
+  "fault_start_effective": 1794256949.4469714,
+  "fault_end_effective": 1794256978.967044,
+  "fault_duration_s": 30,
+  "burn_cores": null,
+  "seed": 42,
+  "experiment_start_ts": 1794256888.7113762,
+  "experiment_end_ts": 1794257069.3572495
+}

@@ -1,0 +1,51 @@
+version: "3.9"
+
+services:
+  jaeger-agent:
+    image: jaegertracing/all-in-one:1.32
+    ports:
+      - "16686:16686"
+      - "14268:14268"
+      - "14269:14269"
+      - "6831:6831/udp"
+      - "6832:6832/udp"
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    hostname: cadvisor
+    container_name: cadvisor
+    ports:
+      - "8088:8080"
+    command:
+      - '--housekeeping_interval=1s'
+      - '--max_housekeeping_interval=2s'
+      - '--global_housekeeping_interval=2s'
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    privileged: true
+    devices:
+      - /dev/kmsg
+    restart: always
+
+  prometheus:
+    image: prom/prometheus:latest
+    hostname: prometheus
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - /home/maria/rca-project/deploy/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/usr/share/prometheus/console_libraries'
+      - '--web.console.templates=/usr/share/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    depends_on:
+      - cadvisor
+      - jaeger-agent
+    restart: always

@@ -1,0 +1,158 @@
+[
+  {
+    "id": 0,
+    "name": "nginx-thrift",
+    "container_pattern": "nginx-thrift",
+    "type": "frontend"
+  },
+  {
+    "id": 1,
+    "name": "compose-post-service",
+    "container_pattern": "compose-post-service",
+    "type": "business_logic"
+  },
+  {
+    "id": 2,
+    "name": "text-service",
+    "container_pattern": "text-service",
+    "type": "business_logic"
+  },
+  {
+    "id": 3,
+    "name": "user-mention-service",
+    "container_pattern": "user-mention-service",
+    "type": "business_logic"
+  },
+  {
+    "id": 4,
+    "name": "user-service",
+    "container_pattern": "user-service",
+    "type": "business_logic"
+  },
+  {
+    "id": 5,
+    "name": "user-mongodb",
+    "container_pattern": "user-mongodb",
+    "type": "datastore_nosql"
+  },
+  {
+    "id": 6,
+    "name": "user-memcached",
+    "container_pattern": "user-memcached",
+    "type": "datastore_cache"
+  },
+  {
+    "id": 7,
+    "name": "user-timeline-service",
+    "container_pattern": "user-timeline-service",
+    "type": "business_logic"
+  },
+  {
+    "id": 8,
+    "name": "user-timeline-mongodb",
+    "container_pattern": "user-timeline-mongodb",
+    "type": "datastore_nosql"
+  },
+  {
+    "id": 9,
+    "name": "user-timeline-redis",
+    "container_pattern": "user-timeline-redis",
+    "type": "datastore_cache"
+  },
+  {
+    "id": 10,
+    "name": "post-storage-service",
+    "container_pattern": "post-storage-service",
+    "type": "business_logic"
+  },
+  {
+    "id": 11,
+    "name": "post-storage-mongodb",
+    "container_pattern": "post-storage-mongodb",
+    "type": "datastore_nosql"
+  },
+  {
+    "id": 12,
+    "name": "post-storage-memcached",
+    "container_pattern": "post-storage-memcached",
+    "type": "datastore_cache"
+  },
+  {
+    "id": 13,
+    "name": "home-timeline-service",
+    "container_pattern": "home-timeline-service",
+    "type": "business_logic"
+  },
+  {
+    "id": 14,
+    "name": "home-timeline-redis",
+    "container_pattern": "home-timeline-redis",
+    "type": "datastore_cache"
+  },
+  {
+    "id": 15,
+    "name": "social-graph-service",
+    "container_pattern": "social-graph-service",
+    "type": "business_logic"
+  },
+  {
+    "id": 16,
+    "name": "social-graph-mongodb",
+    "container_pattern": "social-graph-mongodb",
+    "type": "datastore_nosql"
+  },
+  {
+    "id": 17,
+    "name": "social-graph-redis",
+    "container_pattern": "social-graph-redis",
+    "type": "datastore_cache"
+  },
+  {
+    "id": 18,
+    "name": "url-shorten-service",
+    "container_pattern": "url-shorten-service",
+    "type": "business_logic"
+  },
+  {
+    "id": 19,
+    "name": "url-shorten-mongodb",
+    "container_pattern": "url-shorten-mongodb",
+    "type": "datastore_nosql"
+  },
+  {
+    "id": 20,
+    "name": "url-shorten-memcached",
+    "container_pattern": "url-shorten-memcached",
+    "type": "datastore_cache"
+  },
+  {
+    "id": 21,
+    "name": "media-service",
+    "container_pattern": "media-service",
+    "type": "business_logic"
+  },
+  {
+    "id": 22,
+    "name": "media-mongodb",
+    "container_pattern": "media-mongodb",
+    "type": "datastore_nosql"
+  },
+  {
+    "id": 23,
+    "name": "media-memcached",
+    "container_pattern": "media-memcached",
+    "type": "datastore_cache"
+  },
+  {
+    "id": 24,
+    "name": "media-frontend",
+    "container_pattern": "media-frontend",
+    "type": "frontend"
+  },
+  {
+    "id": 25,
+    "name": "unique-id-service",
+    "container_pattern": "unique-id-service",
+    "type": "business_logic"
+  }
+]

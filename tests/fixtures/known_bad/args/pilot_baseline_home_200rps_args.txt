@@ -1,0 +1,20 @@
+{
+  "run_id": "pilot_baseline_home_200rps",
+  "system": "DeathStarBench-SocialNetwork",
+  "rps": 200,
+  "experiment_duration": 60,
+  "warm_up_duration": 60,
+  "fault_type": "none",
+  "cpu_mode": null,
+  "target_component": "",
+  "fault_measure": "",
+  "fault_start_ts": null,
+  "fault_end_ts": null,
+  "fault_start_effective": null,
+  "fault_end_effective": null,
+  "fault_duration_s": 60,
+  "burn_cores": null,
+  "seed": 42,
+  "experiment_start_ts": 1794077560.4096007,
+  "experiment_end_ts": 1794077620.9591103
+}

@@ -1,0 +1,75 @@
+{
+  "system": "DeathStarBench-SocialNetwork",
+  "window_size_seconds": 5.0,
+  "metadata_columns": [
+    "window_id",
+    "timestamp",
+    "window_start_ts",
+    "window_end_ts",
+    "is_warmup",
+    "phase_label",
+    "transition_flag",
+    "fault_overlap_pct",
+    "is_fault_window",
+    "root_cause_service_name",
+    "fault_type"
+  ],
+  "microservices": [
+    "nginx-thrift",
+    "compose-post-service",
+    "text-service",
+    "user-service",
+    "media-service",
+    "unique-id-service",
+    "url-shorten-service",
+    "user-mention-service",
+    "post-storage-service",
+    "user-timeline-service",
+    "home-timeline-service",
+    "social-graph-service"
+  ],
+  "datastores": [
+    "user-mongodb",
+    "user-memcached",
+    "user-timeline-mongodb",
+    "user-timeline-redis",
+    "post-storage-mongodb",
+    "post-storage-memcached",
+    "social-graph-mongodb",
+    "social-graph-redis",
+    "url-shorten-mongodb",
+    "url-shorten-memcached",
+    "media-mongodb",
+    "media-memcached",
+    "home-timeline-redis"
+  ],
+  "per_service_metrics": {
+    "cadvisor": [
+      "cpu_rate",
+      "cfs_throttled_periods_rate",
+      "cfs_throttled_seconds_rate",
+      "mem_bytes",
+      "mem_usage_ratio",
+      "mem_swap_rate"
+    ],
+    "docker_netio": [
+      "net_rx_bytes_rate",
+      "net_tx_bytes_rate",
+      "net_drop_rate",
+      "net_err_rate"
+    ],
+    "jaeger_spans": [
+      "call_count",
+      "p50_latency_ms",
+      "p90_latency_ms",
+      "p95_latency_ms",
+      "p99_latency_ms",
+      "error_count",
+      "error_rate"
+    ],
+    "app_logs": [
+      "log_count",
+      "log_error_count"
+    ]
+  }
+}

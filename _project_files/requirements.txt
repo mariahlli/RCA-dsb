@@ -1,0 +1,50 @@
+# Generated: 2026-10-15  Python 3.14
+# Install ONLY after supervisor approval: pip install -r requirements.txt
+# Note: PyTorch/CUDA versions pinned for RTX 5060 (CUDA 13.x — use cu124 wheel index)
+
+# ── Core scientific stack ──────────────────────────────────────────────────
+numpy==2.2.5
+pandas==2.2.3
+pyarrow==19.0.1
+scipy==1.15.3
+scikit-learn==1.6.1
+statsmodels==0.14.4
+
+# ── Graph & deep learning ─────────────────────────────────────────────────
+# Install PyTorch separately first (CUDA wheel):
+# pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cu124
+torch==2.6.0
+torch-geometric==2.6.1
+# torch-geometric-temporal — install from GitHub until stable release for PyG 2.6:
+# pip install git+https://github.com/benedekrozemberczki/pytorch_geometric_temporal.git
+
+# ── Explainability ────────────────────────────────────────────────────────
+captum==0.7.0
+
+# ── Streaming / big files ─────────────────────────────────────────────────
+ijson==3.3.0
+
+# ── Log parsing ───────────────────────────────────────────────────────────
+drain3==0.9.11
+
+# ── Config management ─────────────────────────────────────────────────────
+hydra-core==1.3.2
+omegaconf==2.3.0
+
+# ── Data versioning ───────────────────────────────────────────────────────
+dvc==3.59.0
+
+# ── Visualisation ─────────────────────────────────────────────────────────
+matplotlib==3.10.1
+seaborn==0.13.2
+plotly==5.24.1
+
+# ── Testing ───────────────────────────────────────────────────────────────
+pytest==8.3.5
+pytest-cov==6.1.0
+
+# ── Utilities ─────────────────────────────────────────────────────────────
+tqdm==4.67.1
+rich==13.9.4
+networkx==3.4.2
+python-dateutil==2.9.0

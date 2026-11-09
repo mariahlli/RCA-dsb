@@ -1,0 +1,21 @@
+{
+  "run_id": "baseline_mixed_50rps_300s",
+  "system": "DeathStarBench-SocialNetwork",
+  "endpoint": "mixed",
+  "rps": 50,
+  "experiment_duration": 300,
+  "warm_up_duration": 60,
+  "fault_type": "none",
+  "cpu_mode": null,
+  "target_component": "",
+  "fault_measure": "",
+  "fault_start_ts": null,
+  "fault_end_ts": null,
+  "fault_start_effective": null,
+  "fault_end_effective": null,
+  "fault_duration_s": 60,
+  "burn_cores": null,
+  "seed": 42,
+  "experiment_start_ts": 1794081314.8092308,
+  "experiment_end_ts": 1794081615.457883
+}

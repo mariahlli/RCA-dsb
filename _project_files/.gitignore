@@ -1,0 +1,54 @@
+# .gitignore for rca-project
+
+# Dataset symlinks — data is external, never committed
+data/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# DVC
+*.dvc
+.dvc/cache/
+.dvc/tmp/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Hydra outputs
+outputs/
+multirun/
+
+# Large result files (track with DVC, not git)
+results/**/*.pkl
+results/**/*.pt
+results/**/*.parquet
+
+# Temp / scratch
+*.tmp
+*.bak
+_phase0_*.sh
+_project_files/

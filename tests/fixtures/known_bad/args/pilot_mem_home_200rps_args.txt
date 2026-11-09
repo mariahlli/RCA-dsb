@@ -1,0 +1,21 @@
+{
+  "run_id": "pilot_mem_home_200rps",
+  "system": "DeathStarBench-SocialNetwork",
+  "endpoint": "home",
+  "rps": 200,
+  "experiment_duration": 120,
+  "warm_up_duration": 45,
+  "fault_type": "memory",
+  "cpu_mode": null,
+  "target_component": "home-timeline-redis",
+  "fault_measure": "memory_mb=64.0",
+  "fault_start_ts": 1794090779.6923468,
+  "fault_end_ts": 1794090809.4129426,
+  "fault_start_effective": 1794090779.6923473,
+  "fault_end_effective": 1794090809.687938,
+  "fault_duration_s": 30,
+  "burn_cores": null,
+  "seed": 42,
+  "experiment_start_ts": 1794090734.4139576,
+  "experiment_end_ts": 1794090855.0383866
+}

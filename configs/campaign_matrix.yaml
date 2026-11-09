@@ -1,0 +1,62 @@
+# configs/campaign_matrix.yaml
+# Specification of the balanced RCA benchmark campaign for DeathStarBench Social Network
+
+version: "2.0"
+benchmark_name: "DeathStarBench-SocialNetwork-RCA"
+
+time_profile:
+  warm_up_s: 45
+  fault_duration_s: 45
+  recovery_duration_s: 45
+  cooldown_s: 15
+  total_duration_s: 150
+
+load_levels:
+  low: 50
+  medium: 100
+  high: 200
+
+target_services:
+  orchestration:
+    - compose-post-service
+  business_logic:
+    - text-service
+    - user-service
+    - social-graph-service
+  data_access:
+    - post-storage-service
+    - user-timeline-service
+    - home-timeline-service
+
+fault_types:
+  cpu_throttling:
+    type: "cpu"
+    levels:
+      mild: 0.06
+      severe: 0.03
+      extreme: 0.015
+  memory_limit:
+    type: "memory"
+    levels:
+      mild: 256
+      severe: 128
+  network_delay:
+    type: "network"
+    levels:
+      mild:
+        delay_ms: 30
+        loss_pct: 0
+      severe:
+        delay_ms: 100
+        loss_pct: 0
+  network_loss:
+    type: "network"
+    levels:
+      mild:
+        delay_ms: 0
+        loss_pct: 5.0
+      severe:
+        delay_ms: 0
+        loss_pct: 15.0
+
+repetitions_per_scenario: 3
